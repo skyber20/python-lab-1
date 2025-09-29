@@ -2,7 +2,7 @@ class Stack:
     def __init__(self):
         self.items: list = []
 
-    def push(self, elem: int | float):
+    def push(self, elem: int | float | str):
         self.items.append(elem)
 
     def pop(self):
