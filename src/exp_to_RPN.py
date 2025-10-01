@@ -10,6 +10,8 @@ def set_prioritets(tokens: list[tuple[str, str]]) -> list[str]:
         if token[-1] == 'NUMBER':
             output.append(token[0])
         elif token[0] == '(': stack_operators.push(token[0])
+        elif token[0] == '**' and (stack_operators.is_empty() or stack_operators.top() == '**'):
+            stack_operators.push('**')
         elif token[-1] == 'OPERATOR' and token[0] not in '()':
             while not stack_operators.is_empty():
                 operator: str = stack_operators.top()
@@ -35,5 +37,4 @@ def set_prioritets(tokens: list[tuple[str, str]]) -> list[str]:
         if operator == '(': raise ValueError("Открывающих скобок больше, чем закрывающих")
         output.append(operator)
         stack_operators.pop()
-
     return output

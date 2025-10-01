@@ -15,8 +15,6 @@ def multy(a: int | float, b: int | float) -> int | float:
     return a * b
 
 
-
-
 def divide(a: int | float, b: int | float) -> int | float:
     if b == 0: raise ZeroDivisionError("Деление на 0")
     return float_or_int(a / b)
@@ -30,13 +28,13 @@ def integer_division(a: int | float, b: int | float) -> int:
     if b == 0: raise ZeroDivisionError("Деление на 0")
     if '.' in str(a) or '.' in str(b):
         raise Exception("Невозможно выполнить целочисленное деление, если 2 числа не целые")
-    return a // b
+    return int(a // b)
 
 
 def mod(a: int | float, b: int | float):
     if b == 0: raise ZeroDivisionError("Деление на 0")
     if '.' in str(a) or '.' in str(b):
-        raise Exception("Невозможно выполнить целочисленное деление, если 2 числа не целые")
+        raise Exception("Невозможно выполнить деление с остатком, если 2 числа не целые")
     return a % b
 
 

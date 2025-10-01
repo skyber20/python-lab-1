@@ -2,7 +2,7 @@ from src.funcs_for_calc import *
 
 OPERATORS: list[str] = ['+', '-', '*', '/', '//', '%', '**', '〜', '$']
 DIGITS = '0123456789.'
-PRIORITETS: dict[str: int] = {
+PRIORITETS: dict[str, int] = {
     '+': 1,
     '-': 1,
     '*': 2,

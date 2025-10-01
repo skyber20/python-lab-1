@@ -11,8 +11,8 @@ def func_tokenization(input_from_user: str) -> list[tuple[str, str]] | None:
         if curr_symb in '()': tokens.append((curr_symb, 'BRACKET'))
         elif curr_symb in DIGITS:
             concat += curr_symb
-            if input_from_user[ind_symb + 1] in ' )':
-                if concat.count('.') > 1: raise ValueError("2 точки в одном вещественном числе")
+            if not input_from_user[ind_symb + 1].isdigit() and input_from_user[ind_symb + 1] != '.':
+                if concat.count('.') > 1: raise ValueError(f"{concat.count('.')} точки в одном вещественном числе")
                 tokens.append((concat, 'NUMBER'))
                 concat = ''
         elif curr_symb in OPERATORS:
