@@ -2,6 +2,11 @@ from src.constants import OPERATORS, DIGITS
 
 
 def before_tokenization(input_from_user: str) -> None:
+    """
+    Функция, проверяющая корректность арифметического выражения
+    :param input_from_user: ввод юзера
+    :return: корректно или нет
+    """
     alphabet = DIGITS + ''.join(OPERATORS) + '() '
     if input_from_user == ' ': raise ValueError("Вы ничего не ввели")
     if input_from_user.count('(') > input_from_user.count(')'): raise Exception("Не все открывающиеся скобки закрыты")

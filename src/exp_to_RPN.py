@@ -2,7 +2,7 @@ from src.constants import PRIORITETS
 from src.class_Stack import Stack
 
 
-def set_prioritets(tokens: list[tuple[str, str]]) -> list[str]:
+def expression_to_RPN(tokens: list[tuple[str, str]]) -> list[str]:
     output: list[str] = []
     stack_operators: Stack = Stack()
 
