@@ -20,12 +20,14 @@ def test_exp_to_RPN_3():
 
 def test_exp_to_RPN_4():
     expr: str = '((((2+3)*4)-5)*6)**2 // 10'
-    assert expression_to_RPN(func_tokenization(expr)) == ['2', '3', '+', '4', '*', '5', '-', '6', '*', '2', '**', '10', '//']
+    assert expression_to_RPN(func_tokenization(expr)) == ['2', '3', '+', '4', '*', '5', '-', '6', '*', '2', '**', '10',
+                                                          '//']
 
 
 def test_exp_to_RPN_5():
     expr: str = '3.5 * (2 +  - --4.53) / 2.5 - 1 + 2 ** 3'
-    assert expression_to_RPN(func_tokenization(expr)) == ['3.5', '2', '4.53', '〜', '〜', '〜', '+', '*', '2.5', '/', '1', '-', '2', '3', '**', '+']
+    assert expression_to_RPN(func_tokenization(expr)) == ['3.5', '2', '4.53', '〜', '〜', '〜', '+', '*', '2.5', '/',
+                                                          '1', '-', '2', '3', '**', '+']
 
 
 def test_exp_to_RPN_6():

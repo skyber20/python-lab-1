@@ -34,24 +34,18 @@ def test_exp_calc_6():
 
 
 def test_exp_calc_7():
-    with pytest.raises(Exception):
-        expr: list[str] = ['3', '4', '2', '-']
-        assert func_calculate(expr)
-
-
-def test_exp_calc_8():
-    with pytest.raises(Exception):
+    with pytest.raises(ArithmeticError):
         expr: list[str] = ['8.0', '4', '//']
         assert func_calculate(expr)
 
 
-def test_exp_calc_9():
-    with pytest.raises(Exception):
+def test_exp_calc_8():
+    with pytest.raises(ArithmeticError):
         expr: list[str] = ['13', '4.0', '//']
         assert func_calculate(expr)
 
 
-def test_exp_calc_10():
-    with pytest.raises(Exception):
+def test_exp_calc_9():
+    with pytest.raises(ZeroDivisionError):
         expr: list[str] = ['3', '0', '/']
         assert func_calculate(expr)

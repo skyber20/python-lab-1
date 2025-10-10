@@ -1,4 +1,4 @@
-def float_or_int(n: float | int| str) -> float | int:
+def float_or_int(n: float | int | str) -> float | int:
     """
     Проверка, целочисленное или число с плавающей запятой
     :param n: число
@@ -45,11 +45,12 @@ def divide(a: int | float, b: int | float) -> int | float:
     :param b: число 2
     :return: Частное 2ух чисел, если b != 0, иначе ошибка
     """
-    if b == 0: raise ZeroDivisionError("Деление на 0")
+    if b == 0:
+        raise ZeroDivisionError("Деление на 0")
     return float_or_int(a / b)
 
 
-def pow(a: int | float, b: int | float) -> int | float:
+def power(a: int | float, b: int | float) -> int | float:
     """
     :param a: число 1
     :param b: число 2
@@ -65,9 +66,10 @@ def integer_division(a: int | float, b: int | float) -> int:
     :param b: число 2
     :return: целочисленное деление 2ух чисел, если b != 0, иначе ошибка
     """
-    if b == 0: raise ZeroDivisionError("Деление на 0")
+    if b == 0:
+        raise ZeroDivisionError("Деление на 0")
     if '.' in str(a) or '.' in str(b):
-        raise Exception("Невозможно выполнить целочисленное деление, если 2 числа не целые")
+        raise ArithmeticError("Невозможно выполнить целочисленное деление, если 2 числа не целые")
     return int(a // b)
 
 
@@ -77,9 +79,10 @@ def mod(a: int | float, b: int | float):
     :param b: число 2
     :return: остаток от числа a при делении на число b != 0, иначе ошибка
     """
-    if b == 0: raise ZeroDivisionError("Деление на 0")
+    if b == 0:
+        raise ZeroDivisionError("Деление на 0")
     if '.' in str(a) or '.' in str(b):
-        raise Exception("Невозможно выполнить деление с остатком, если 2 числа не целые")
+        raise ArithmeticError("Невозможно выполнить деление с остатком, если 2 числа не целые")
     return a % b
 
 
