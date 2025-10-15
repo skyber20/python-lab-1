@@ -1,6 +1,7 @@
 import pytest
 from src.exp_to_RPN import expression_to_RPN
 from src.tokenization import func_tokenization
+from src.Errors_classes import BracketsError
 
 
 def test_exp_to_RPN_1():
@@ -25,12 +26,12 @@ def test_exp_to_RPN_4():
 
 
 def test_exp_to_RPN_5():
-    expr: str = '3.5 * (2 +  - --4.53) / 2.5 - 1 + 2 ** 3'
-    assert expression_to_RPN(func_tokenization(expr)) == ['3.5', '2', '4.53', '〜', '〜', '〜', '+', '*', '2.5', '/',
+    expr: str = '3.5 * (2 +  - --4.532) / 2.5 - 1 + 2 ** 3'
+    assert expression_to_RPN(func_tokenization(expr)) == ['3.5', '2', '4.532', '〜', '〜', '〜', '+', '*', '2.5', '/',
                                                           '1', '-', '2', '3', '**', '+']
 
 
 def test_exp_to_RPN_6():
-    with pytest.raises(ValueError):
+    with pytest.raises(BracketsError):
         expr: str = '2 + 3)'
         expression_to_RPN(func_tokenization(expr))

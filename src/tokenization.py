@@ -1,4 +1,7 @@
 from src.constants import DIGITS, OPERATORS
+from src.Errors_classes import (
+    BracketsError, IvalidCharacterError
+)
 
 
 def func_tokenization(input_from_user: str) -> list[tuple[str, str]]:
@@ -46,24 +49,24 @@ def before_tokenization(input_from_user: str) -> None:
     if input_from_user == ' ':
         raise ValueError("Вы ничего не ввели")
     if input_from_user.count('(') > input_from_user.count(')'):
-        raise ValueError("Не все открывающиеся скобки закрыты")
+        raise BracketsError("Не все открывающиеся скобки закрыты")
     elif input_from_user.count('(') < input_from_user.count(')'):
-        raise ValueError("Закрывающих скобок больше, чем открывающих")
+        raise BracketsError("Закрывающих скобок больше, чем открывающих")
     for ind in range(len(input_from_user) - 1):
         curr: str = input_from_user[ind]
         if curr not in alphabet:
-            raise ValueError(f"Вы ввели недопустимые знаки! Допустимые знаки: {alphabet}")
+            raise IvalidCharacterError("Вы ввели недопустимые знаки!")
         if curr == '(':
             closed_ind: int = input_from_user[ind:].find(')')
 
             if closed_ind == -1:
-                raise ValueError("Неправильный порядок скобок")
+                raise BracketsError("Неправильный порядок скобок")
 
             closed_ind += ind
             between: str = input_from_user[ind+1:closed_ind]
 
             if not len(between):
-                raise ValueError("Пустые скобки")
+                raise BracketsError("Пустые скобки")
 
             if between[0] in ' */%':
-                raise ValueError("Некорректное выражение внутри скобок")
+                raise BracketsError("Некорректное выражение внутри скобок")

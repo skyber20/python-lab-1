@@ -1,5 +1,6 @@
 from src.constants import PRIORITETS
 from src.class_Stack import Stack
+from src.Errors_classes import BracketsError
 
 
 def expression_to_RPN(tokens: list[tuple[str, str]]) -> list[str]:
@@ -49,11 +50,11 @@ def expression_to_RPN(tokens: list[tuple[str, str]]) -> list[str]:
                     output.append(operator1)
                 stack_operators.pop()
             if not find_open_bracket:
-                raise ValueError("Закрывающих скобок больше, чем открывающих")
+                raise BracketsError("Закрывающих скобок больше, чем открывающих")
     while not stack_operators.is_empty():
         operator2: str = stack_operators.top()
         if operator2 == '(':
-            raise ValueError("Открывающих скобок больше, чем закрывающих")
+            raise BracketsError("Открывающих скобок больше, чем закрывающих")
         output.append(operator2)
         stack_operators.pop()
     return output

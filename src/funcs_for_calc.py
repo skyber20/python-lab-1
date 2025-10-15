@@ -1,3 +1,5 @@
+from src.Errors_classes import CalculateError
+
 def float_or_int(n: float | int | str) -> float | int:
     """
     Проверка, целочисленное или число с плавающей запятой
@@ -69,7 +71,7 @@ def integer_division(a: int | float, b: int | float) -> int:
     if b == 0:
         raise ZeroDivisionError("Деление на 0")
     if '.' in str(a) or '.' in str(b):
-        raise ArithmeticError("Невозможно выполнить целочисленное деление, если 2 числа не целые")
+        raise CalculateError("Невозможно выполнить целочисленное деление, если 2 числа не целые")
     return int(a // b)
 
 
@@ -82,7 +84,7 @@ def mod(a: int | float, b: int | float):
     if b == 0:
         raise ZeroDivisionError("Деление на 0")
     if '.' in str(a) or '.' in str(b):
-        raise ArithmeticError("Невозможно выполнить деление с остатком, если 2 числа не целые")
+        raise CalculateError("Невозможно выполнить деление с остатком, если 2 числа не целые")
     return a % b
 
 
